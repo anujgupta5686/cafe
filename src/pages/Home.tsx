@@ -23,61 +23,57 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/20 via-primary/5 to-background py-20 md:py-32">
+      <section className="relative bg-gradient-to-br from-primary/20 via-primary/5 to-background py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-primary">
-                <Star className="h-4 w-4 fill-primary" />
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
+                <Star className="h-3 w-3 fill-primary" />
                 <span>Premium Quality Coffee</span>
               </div>
-              <h1 className="text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+              <h1 className="text-3xl leading-tight font-bold md:text-4xl lg:text-5xl">
                 Welcome to <span className="text-primary">Beaudesert</span>
                 <br />
                 Cafe & Restaurant
               </h1>
-              <p className="max-w-lg text-lg text-muted-foreground">
+              <p className="max-w-lg text-sm text-muted-foreground md:text-base">
                 Where every cup tells a story. Experience the finest coffee and
                 delicious food in a warm, welcoming atmosphere.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" onClick={() => navigate("/menu")}>
+              <div className="flex flex-wrap gap-3">
+                <Button onClick={() => navigate("/menu")}>
                   View Menu
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/menu")}
-                >
+                <Button variant="outline" onClick={() => navigate("/menu")}>
                   Order Now
                 </Button>
               </div>
             </div>
             <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <img
-                  src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"
                   alt="Coffee"
-                  className="h-64 w-full rounded-lg object-cover shadow-xl"
+                  className="h-48 w-full rounded-lg object-cover shadow-lg md:h-56"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop"
+                  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop"
                   alt="Coffee"
-                  className="mt-8 h-64 w-full rounded-lg object-cover shadow-xl"
+                  className="mt-6 h-48 w-full rounded-lg object-cover shadow-lg md:mt-8 md:h-56"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 rounded-lg border bg-background p-4 shadow-lg">
+              <div className="absolute -bottom-3 -left-3 rounded-lg border bg-background px-3 py-2 shadow-md">
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="h-8 w-8 rounded-full border-2 border-background bg-primary/20"
+                        className="h-6 w-6 rounded-full border-2 border-background bg-primary/20"
                       />
                     ))}
                   </div>
-                  <span className="text-sm font-medium">
+                  <span className="text-xs font-medium">
                     500+ happy customers
                   </span>
                 </div>
@@ -88,39 +84,39 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-3">
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Coffee className="h-6 w-6 text-primary" />
+          <div className="grid gap-4 md:grid-cols-3">
+            <Card className="border-0 shadow-sm">
+              <CardContent className="p-4 text-center">
+                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <Coffee className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mb-2 font-semibold">Premium Coffee</h3>
-                <p className="text-sm text-muted-foreground">
-                  Sourced from the finest beans around the world
+                <h3 className="text-sm font-semibold">Premium Coffee</h3>
+                <p className="text-xs text-muted-foreground">
+                  Sourced from the finest beans
                 </p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <ChefHat className="h-6 w-6 text-primary" />
+            <Card className="border-0 shadow-sm">
+              <CardContent className="p-4 text-center">
+                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <ChefHat className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mb-2 font-semibold">Expert Chefs</h3>
-                <p className="text-sm text-muted-foreground">
-                  Our chefs create culinary masterpieces daily
+                <h3 className="text-sm font-semibold">Expert Chefs</h3>
+                <p className="text-xs text-muted-foreground">
+                  Culinary masterpieces daily
                 </p>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Clock className="h-6 w-6 text-primary" />
+            <Card className="border-0 shadow-sm">
+              <CardContent className="p-4 text-center">
+                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <Clock className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mb-2 font-semibold">Quick Service</h3>
-                <p className="text-sm text-muted-foreground">
-                  Freshly prepared and served with love
+                <h3 className="text-sm font-semibold">Quick Service</h3>
+                <p className="text-xs text-muted-foreground">
+                  Freshly prepared with love
                 </p>
               </CardContent>
             </Card>
@@ -129,39 +125,45 @@ const Home = () => {
       </section>
 
       {/* Featured Menu Section */}
-      <section className="bg-muted/30 py-16">
+      <section className="bg-muted/30 py-12">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              Featured Menu
-            </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              Discover our most popular items, crafted with passion and the
-              finest ingredients
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl font-bold md:text-3xl">Featured Menu</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Discover our most popular items
             </p>
           </div>
 
           {loading ? (
-            <div className="py-12 text-center">
-              <div className="text-muted-foreground">Loading menu...</div>
+            <div className="flex justify-center py-8">
+              <div className="flex flex-col items-center gap-2">
+                <div className="h-6 w-6 animate-spin rounded-full border-3 border-primary border-t-transparent" />
+                <span className="text-xs text-muted-foreground">
+                  Loading...
+                </span>
+              </div>
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                 {featuredItems.map((item) => (
                   <MenuCard key={item._id} item={item} onAddToCart={addItem} />
                 ))}
               </div>
               {featuredItems.length === 0 && (
-                <div className="py-12 text-center">
-                  <p className="text-muted-foreground">
+                <div className="py-8 text-center">
+                  <p className="text-sm text-muted-foreground">
                     No items available yet.
                   </p>
                 </div>
               )}
               {items.length > 4 && (
-                <div className="mt-8 text-center">
-                  <Button variant="outline" onClick={() => navigate("/menu")}>
+                <div className="mt-6 text-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => navigate("/menu")}
+                  >
                     View Full Menu
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

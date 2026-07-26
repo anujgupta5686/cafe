@@ -42,7 +42,6 @@ const AdminProfile = () => {
 
     setLoading(true)
     try {
-      // You'll need to add this endpoint in backend
       await axios.put("/admin/change-password", {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
@@ -120,21 +119,19 @@ const AdminProfile = () => {
                     value={passwordData.currentPassword}
                     onChange={handlePasswordChange}
                     required
-                    className="pr-10"
+                    className="h-10 pr-10"
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-1/2 right-2 -translate-y-1/2"
+                    className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     onClick={() => setShowCurrentPassword(!showCurrentPassword)}
                   >
                     {showCurrentPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-4 w-4" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-4 w-4" />
                     )}
-                  </Button>
+                  </button>
                 </div>
               </div>
 
@@ -149,21 +146,19 @@ const AdminProfile = () => {
                     value={passwordData.newPassword}
                     onChange={handlePasswordChange}
                     required
-                    className="pr-10"
+                    className="h-10 pr-10"
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-1/2 right-2 -translate-y-1/2"
+                    className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     onClick={() => setShowNewPassword(!showNewPassword)}
                   >
                     {showNewPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-4 w-4" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-4 w-4" />
                     )}
-                  </Button>
+                  </button>
                 </div>
               </div>
 
@@ -178,21 +173,19 @@ const AdminProfile = () => {
                     value={passwordData.confirmPassword}
                     onChange={handlePasswordChange}
                     required
-                    className="pr-10"
+                    className="h-10 pr-10"
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-1/2 right-2 -translate-y-1/2"
+                    className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-4 w-4" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-4 w-4" />
                     )}
-                  </Button>
+                  </button>
                 </div>
               </div>
 

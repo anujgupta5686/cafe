@@ -14,12 +14,12 @@ export type CartItem = MenuItem & {
   quantity: number
 }
 
-// Order Item Type - ADD quantity field
+// Order Item Type
 export type OrderItem = {
   menuItemId: string
   name: string
   price: number
-  quantity: number // ← ADD THIS
+  quantity: number
 }
 
 // Order Type
@@ -31,6 +31,7 @@ export type Order = {
   specialInstructions: string
   items: OrderItem[]
   totalAmount: number
+  status?: string // ← ADD THIS
   createdAt: string
   updatedAt: string
 }

@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Coffee } from "lucide-react"
 import type { MenuItem } from "@/types"
@@ -16,31 +10,42 @@ interface MenuCardProps {
 
 const MenuCard = ({ item, onAddToCart }: MenuCardProps) => {
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-      <CardHeader className="p-0">
-        <div className="flex h-48 w-full items-center justify-center overflow-hidden bg-muted">
-          {item.image ? (
-            <img
-              src={item.image}
-              alt={item.name}
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-          ) : (
-            <Coffee className="h-16 w-16 text-muted-foreground" />
-          )}
-        </div>
-      </CardHeader>
-      <CardContent className="flex-1 p-4">
-        <CardTitle className="mb-2 text-xl">{item.name}</CardTitle>
-        <p className="mb-2 line-clamp-2 text-sm text-muted-foreground">
+    <Card className="group overflow-hidden border border-border/50 bg-background shadow-sm transition-all duration-200 hover:shadow-md">
+      {/* Image - Fixed height 140px */}
+      <div className="relative h-[180px] w-full overflow-hidden bg-muted/20">
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <Coffee className="h-8 w-8 text-muted-foreground/30" />
+          </div>
+        )}
+      </div>
+
+      {/* Content - Compact */}
+      <CardContent className="space-y-0.5 p-3 pb-1">
+        <h3 className="line-clamp-1 text-sm leading-tight font-semibold">
+          {item.name}
+        </h3>
+        <p className="line-clamp-1 text-xs text-muted-foreground">
           {item.description}
         </p>
-        <p className="text-2xl font-bold text-primary">₹{item.price}</p>
+        <p className="pt-1 text-base font-bold text-primary">₹{item.price}</p>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
-        <Button className="w-full" onClick={() => onAddToCart(item)}>
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          Add to Cart
+
+      {/* Footer - Compact */}
+      <CardFooter className="p-3 pt-1">
+        <Button
+          size="sm"
+          className="h-8 w-full text-xs"
+          onClick={() => onAddToCart(item)}
+        >
+          <ShoppingCart className="mr-1.5 h-3 w-3" />
+          Add
         </Button>
       </CardFooter>
     </Card>

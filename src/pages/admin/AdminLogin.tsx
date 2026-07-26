@@ -42,8 +42,8 @@ const AdminLogin = () => {
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault() // ✅ This prevents page reload
     if (!formData.email || !formData.password) {
       toast.error("Please fill in all fields")
       return

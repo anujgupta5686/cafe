@@ -1,4 +1,10 @@
-import { Outlet, Link, useNavigate } from "react-router-dom"
+import {
+  Outlet,
+  Link,
+  useNavigate,
+  useLocation,
+  NavLink,
+} from "react-router-dom"
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -18,13 +24,14 @@ import { useState } from "react"
 
 const AdminLayout = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const dispatch = useAppDispatch()
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
 
   const handleLogout = async () => {
     await dispatch(logoutAdmin())
     toast.success("Logged out successfully")
-    navigate("/admin/login")
+    navigate("/")
   }
 
   const navItems = [
@@ -33,6 +40,14 @@ const AdminLayout = () => {
     { to: "/admin/orders", icon: ShoppingBag, label: "Orders" },
     { to: "/admin/profile", icon: User, label: "Profile" },
   ]
+
+  // Check if path is active (including nested routes)
+  const isActive = (path: string) => {
+    if (path === "/admin/dashboard") {
+      return location.pathname === "/admin/dashboard"
+    }
+    return location.pathname.startsWith(path)
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -49,9 +64,9 @@ const AdminLayout = () => {
         className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r bg-background/95 backdrop-blur transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"} `}
       >
         <div className="flex h-full flex-col">
-          {/* Header */}
+          {/* Header - Logo navigates to Home page */}
           <div className="flex items-center justify-between border-b p-4">
-            <Link to="/admin/dashboard" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <Coffee className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold">Admin</span>
             </Link>
@@ -67,17 +82,26 @@ const AdminLayout = () => {
 
           {/* Navigation - Scrollable */}
           <nav className="flex-1 space-y-1 overflow-y-auto p-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-muted"
-                onClick={() => setIsMobileSidebarOpen(false)}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = isActive(item.to)
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+                    active
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "hover:bg-muted"
+                  }`}
+                  onClick={() => setIsMobileSidebarOpen(false)}
+                >
+                  <item.icon
+                    className={`h-4 w-4 ${active ? "text-primary-foreground" : ""}`}
+                  />
+                  {item.label}
+                </Link>
+              )
+            })}
           </nav>
 
           {/* Footer */}
@@ -97,7 +121,7 @@ const AdminLayout = () => {
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Mobile Header */}
         <div className="flex items-center justify-between border-b p-4 md:hidden">
-          <Link to="/admin/dashboard" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <Coffee className="h-6 w-6 text-primary" />
             <span className="text-xl font-bold">Admin</span>
           </Link>
