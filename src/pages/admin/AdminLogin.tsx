@@ -23,6 +23,7 @@ const AdminLogin = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      toast.success("Login successful! Welcome back!")
       navigate("/admin/dashboard")
     }
   }, [isAuthenticated, navigate])

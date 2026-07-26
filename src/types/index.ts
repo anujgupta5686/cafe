@@ -1,4 +1,4 @@
-// ✅ Correct - Using export type
+// Menu Item Type
 export type MenuItem = {
   _id: string
   name: string
@@ -9,16 +9,20 @@ export type MenuItem = {
   updatedAt?: string
 }
 
+// Cart Item Type
 export type CartItem = MenuItem & {
   quantity: number
 }
 
+// Order Item Type - ADD quantity field
 export type OrderItem = {
   menuItemId: string
   name: string
   price: number
+  quantity: number // ← ADD THIS
 }
 
+// Order Type
 export type Order = {
   _id: string
   customerName: string
@@ -31,12 +35,14 @@ export type Order = {
   updatedAt: string
 }
 
+// Admin Type
 export type Admin = {
   id: string
   email: string
   name: string
 }
 
+// API Response Type
 export type ApiResponse<T = any> = {
   success: boolean
   message?: string

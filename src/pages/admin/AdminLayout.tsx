@@ -7,6 +7,7 @@ import {
   Coffee,
   Menu,
   X,
+  User,
 } from "lucide-react"
 import { useAppDispatch } from "@/store/hooks"
 import { logoutAdmin } from "@/store/slices/authSlice"
@@ -30,6 +31,7 @@ const AdminLayout = () => {
     { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { to: "/admin/products", icon: Package, label: "Products" },
     { to: "/admin/orders", icon: ShoppingBag, label: "Orders" },
+    { to: "/admin/profile", icon: User, label: "Profile" },
   ]
 
   return (
