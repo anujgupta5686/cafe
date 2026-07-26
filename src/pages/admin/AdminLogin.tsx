@@ -21,6 +21,7 @@ const AdminLogin = () => {
     password: "",
   })
 
+  // Handle successful login
   useEffect(() => {
     if (isAuthenticated) {
       toast.success("Login successful! Welcome back!")
@@ -28,6 +29,7 @@ const AdminLogin = () => {
     }
   }, [isAuthenticated, navigate])
 
+  // Handle login error
   useEffect(() => {
     if (error) {
       toast.error(error)
@@ -42,13 +44,16 @@ const AdminLogin = () => {
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  // ✅ CRITICAL FIX: e.preventDefault() MUST be here
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault() // ✅ THIS PREVENTS PAGE REFRESH
+
     if (!formData.email || !formData.password) {
       toast.error("Please fill in all fields")
       return
     }
-    await dispatch(loginAdmin(formData))
+
+    dispatch(loginAdmin(formData))
   }
 
   return (
@@ -93,7 +98,7 @@ const AdminLogin = () => {
                 </Label>
                 <Link
                   to="/admin/forgot-password"
-                  className="text-xs text-primary hover:underline"
+                  className="text-xs text-primary transition-colors hover:underline"
                 >
                   Forgot Password?
                 </Link>

@@ -28,10 +28,14 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
+    // ✅ IMPORTANT: Only redirect if NOT on login page
     if (error.response?.status === 401) {
-      localStorage.removeItem("adminToken")
-      localStorage.removeItem("adminData")
-      window.location.href = "/admin/login"
+      const currentPath = window.location.pathname
+      if (!currentPath.includes("/admin/login")) {
+        localStorage.removeItem("adminToken")
+        localStorage.removeItem("adminData")
+        window.location.href = "/admin/login"
+      }
     }
     return Promise.reject(error)
   }
