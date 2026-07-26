@@ -18,9 +18,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" className="flex shrink-0 items-center gap-2">
             <Coffee className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">Beaudesert Cafe</span>
+            <span className="text-lg font-bold md:text-xl">
+              Beaudesert Cafe
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,7 +50,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <ThemeToggle />
 
             <Button
@@ -83,7 +85,7 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="border-t py-4 md:hidden">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <Link
                 to="/"
                 className="text-sm font-medium transition-colors hover:text-primary"
