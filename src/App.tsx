@@ -19,6 +19,9 @@ import AdminProfile from "@/pages/admin/AdminProfile"
 import Products from "@/pages/admin/Products"
 import Orders from "@/pages/admin/Orders"
 import AddProduct from "@/pages/admin/AddProduct"
+import ForgotPassword from "@/pages/admin/ForgotPassword"
+import VerifyOTP from "@/pages/admin/VerifyOTP"
+import ResetPasswordOTP from "@/pages/admin/ResetPasswordOTP"
 
 // Hooks
 import { useAuth } from "@/hooks/useAuth"
@@ -36,13 +39,10 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   const location = useLocation()
-
-  // Check if current route is admin-related
   const isAdminRoute = location.pathname.startsWith("/admin")
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Hide Navbar on admin routes except login */}
       {!isAdminRoute && <Navbar />}
 
       <main className="flex-1">
@@ -55,6 +55,9 @@ function App() {
 
           {/* Admin Auth Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+          <Route path="/admin/verify-otp" element={<VerifyOTP />} />
+          <Route path="/admin/reset-password" element={<ResetPasswordOTP />} />
 
           {/* Admin Protected Routes */}
           <Route
@@ -79,9 +82,7 @@ function App() {
         </Routes>
       </main>
 
-      {/* Hide Footer on admin routes */}
       {!isAdminRoute && <Footer />}
-
       <Toaster richColors position="top-right" />
     </div>
   )
